@@ -5,6 +5,7 @@ class Solution:
             for r in [10, 1000, 100000]:
                 if r <= num < 10*r:
                     ret += 1
+                    break
         return ret
     # def findNumbers(self, nums: List[int]) -> int:
     #     count = 0

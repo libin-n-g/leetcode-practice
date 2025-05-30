@@ -19,6 +19,8 @@ class Solution:
                 else:
                     break
                 for adj_node in edge_map[curr_node]:
+                    if depth == k:
+                        break
                     if adj_node != parent:
                         queue.append((adj_node, depth + 1, curr_node))
         return result

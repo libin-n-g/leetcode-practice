@@ -18,8 +18,7 @@ class Solution:
             not_visited = [True]*n
             while queue:
                 curr_node, depth = queue.popleft()
-                if depth <= k: 
-                    first_tree_ans[i] += 1
+                first_tree_ans[i] += int(depth <= k)
                 not_visited[curr_node] = False
                 for adj_node in edge_map1[curr_node]:
                     if depth + 1 <= k and not_visited[adj_node]:
@@ -33,8 +32,7 @@ class Solution:
             ans = 0
             while queue:
                 curr_node, depth = queue.popleft()
-                if depth <= k-1:
-                    ans += 1
+                ans += int(depth <= k-1)
                 not_visited[curr_node] = False
                 for adj_node in edge_map2[curr_node]:
                     if depth + 2 <= k and not_visited[adj_node]:

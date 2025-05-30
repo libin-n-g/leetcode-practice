@@ -34,13 +34,11 @@ class Solution:
         
         # Compute reachable nodes for first tree with depth k
         first_tree_ans = self.count_reachable_nodes(edge_map1, n, k)
+
         if k == 0: return first_tree_ans
         # Compute max reachable nodes for second tree with depth k-1
         max_ans = 0
         for start_node in range(m):
-            # queue = deque()
-            # for adj_node in edge_map2[start_node]:
-            #     queue.append((adj_node, 1, start_node))
             queue = deque([(start_node, 0, -1)])
             ans = 0
             while queue:

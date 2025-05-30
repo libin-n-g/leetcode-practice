@@ -7,7 +7,7 @@ class Solution:
             edge_map[end].append(start)
         return edge_map
 
-    def count_reachable_nodes(self, edge_map: defaultdict, n: int, k: int, depth_increment: int = 1) -> List[int]:
+    def count_reachable_nodes(self, edge_map: defaultdict, n: int, k: int) -> List[int]:
         """Counts nodes reachable within k steps from each node in the graph."""
         result = [0] * n
         for start_node in range(n):
@@ -15,11 +15,14 @@ class Solution:
             not_visited = [True] * n
             while queue:
                 curr_node, depth = queue.popleft()
-                result[start_node] += int(depth <= k)
+                if depth <= k:
+                    result[start_node] += 1
+                else:
+                    break
                 not_visited[curr_node] = False
                 for adj_node in edge_map[curr_node]:
-                    if depth + depth_increment <= k and not_visited[adj_node]:
-                        queue.append((adj_node, depth + depth_increment))
+                    if not_visited[adj_node]:
+                        queue.append((adj_node, depth + 1))
         return result
 
     def maxTargetNodes(self, edges1: List[List[int]], edges2: List[List[int]], k: int) -> List[int]:
@@ -33,7 +36,7 @@ class Solution:
         edge_map2 = self.build_adjacency_list(edges2, m)
         
         # Compute reachable nodes for first tree with depth k
-        first_tree_ans = self.count_reachable_nodes(edge_map1, n, k, 1)
+        first_tree_ans = self.count_reachable_nodes(edge_map1, n, k)
         
         # Compute max reachable nodes for second tree with depth k-1
         max_ans = 0

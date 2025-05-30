@@ -4,7 +4,6 @@ class Solution:
         visited_node = [{}, {}]
         queue = deque([(node1, 0, 1, 0), (node2, 1, 0, 0)])
         ret = n
-        common_nodes = []
         min_max_distance = n
         while queue:
             curr_node, visited_node_index1, visited_node_index2, distance = queue.popleft()

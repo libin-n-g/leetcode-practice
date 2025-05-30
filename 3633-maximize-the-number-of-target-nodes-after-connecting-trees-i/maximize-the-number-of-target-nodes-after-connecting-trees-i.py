@@ -1,5 +1,5 @@
 class Solution:
-    def build_adjacency_list(self, edges: List[List[int]], n: int) -> defaultdict:
+    def build_adjacency_list(self, edges: List[List[int]]) -> defaultdict:
         """Builds an adjacency list representation of an undirected graph."""
         edge_map = defaultdict(list)
         for start, end in edges:
@@ -32,8 +32,8 @@ class Solution:
         m = len(edges2) + 1
         
         # Build adjacency lists for both trees
-        edge_map1 = self.build_adjacency_list(edges1, n)
-        edge_map2 = self.build_adjacency_list(edges2, m)
+        edge_map1 = self.build_adjacency_list(edges1)
+        edge_map2 = self.build_adjacency_list(edges2)
         
         # Compute reachable nodes for first tree with depth k
         first_tree_ans = self.count_reachable_nodes(edge_map1, n, k)

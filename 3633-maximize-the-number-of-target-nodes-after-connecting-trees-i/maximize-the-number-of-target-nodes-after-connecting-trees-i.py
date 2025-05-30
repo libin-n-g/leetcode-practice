@@ -46,10 +46,13 @@ class Solution:
             ans = 0
             while queue:
                 curr_node, depth = queue.popleft()
-                ans += int(depth <= k - 1)
+                if depth <= k - 1:
+                    ans += 1
+                else:
+                    break
                 not_visited[curr_node] = False
                 for adj_node in edge_map2[curr_node]:
-                    if depth + 2 <= k and not_visited[adj_node]:
+                    if not_visited[adj_node]:
                         queue.append((adj_node, depth + 1))
             max_ans = max(ans, max_ans)
         

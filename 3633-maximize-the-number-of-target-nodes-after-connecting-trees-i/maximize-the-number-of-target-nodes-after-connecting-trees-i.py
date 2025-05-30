@@ -11,18 +11,16 @@ class Solution:
         """Counts nodes reachable within k steps from each node in the graph."""
         result = [0] * n
         for start_node in range(n):
-            queue = deque([(start_node, 0)])
-            not_visited = [True] * n
+            queue = deque([(start_node, 0, -1)])
             while queue:
-                curr_node, depth = queue.popleft()
+                curr_node, depth, parent = queue.popleft()
                 if depth <= k:
                     result[start_node] += 1
                 else:
                     break
-                not_visited[curr_node] = False
                 for adj_node in edge_map[curr_node]:
-                    if not_visited[adj_node]:
-                        queue.append((adj_node, depth + 1))
+                    if adj_node != parent:
+                        queue.append((adj_node, depth + 1, curr_node))
         return result
 
     def maxTargetNodes(self, edges1: List[List[int]], edges2: List[List[int]], k: int) -> List[int]:
@@ -41,19 +39,17 @@ class Solution:
         # Compute max reachable nodes for second tree with depth k-1
         max_ans = 0
         for start_node in range(m):
-            queue = deque([(start_node, 0)])
-            not_visited = [True] * m
+            queue = deque([(start_node, 0, -1)])
             ans = 0
             while queue:
-                curr_node, depth = queue.popleft()
+                curr_node, depth, parent = queue.popleft()
                 if depth <= k - 1:
                     ans += 1
                 else:
                     break
-                not_visited[curr_node] = False
                 for adj_node in edge_map2[curr_node]:
-                    if not_visited[adj_node]:
-                        queue.append((adj_node, depth + 1))
+                    if adj_node != parent:
+                        queue.append((adj_node, depth + 1, curr_node))
             max_ans = max(ans, max_ans)
         
         # Combine results

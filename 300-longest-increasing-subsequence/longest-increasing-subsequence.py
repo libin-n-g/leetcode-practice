@@ -1,7 +1,7 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         longest_subsequence = [nums[0]]
-        for num in nums:
+        for num in nums[1:]:
             if longest_subsequence[-1] < num:
                 longest_subsequence.append(num)
                 # print(longest_subsequence, num)

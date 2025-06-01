@@ -1,18 +1,23 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
+        # Initialize the list with the first number to track the longest increasing subsequence
         longest_subsequence = [nums[0]]
+        # Iterate through the remaining numbers in the input list
         for num in nums[1:]:
+            # If the current number is greater than the last number in the subsequence
             if longest_subsequence[-1] < num:
+                # Append the number to extend the increasing subsequence
                 longest_subsequence.append(num)
-                # print(longest_subsequence, num)
                 continue
+            # If the number cannot extend the subsequence, find the smallest number
+            # in the subsequence that is greater than or equal to the current number
             for i, sub_sequence_endding in enumerate(longest_subsequence):
                 if sub_sequence_endding >= num:
-                    # replace the endding with new one
+                    # Replace the smallest number >= num to maintain a potential
+                    # for a longer increasing subsequence
                     longest_subsequence[i] = num
-                    # print(longest_subsequence, num)
                     break
-            # print(longest_subsequence, num)
+        # Return the length of the longest increasing subsequence
         return len(longest_subsequence)
     
     

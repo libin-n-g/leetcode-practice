@@ -1,29 +1,27 @@
 class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
-        edges = []
         n = len(board)
-        queue = deque(board)
-        order = 1
-        while queue:
-            row = queue.pop()
-            edges.extend(row[::order])
-            order = 0-order    
+        edges = [] 
         # do BFS
         end_node = n*n
-        queue = deque([(1, -1, 0)])
+        queue = deque([(1, 0)])
         visited_nodes = [1]
         while queue:
-            curr_node, parent, distance = queue.popleft()
+            curr_node, distance = queue.popleft()
             if curr_node == end_node:
                 return distance
-            found = False
-            last_accessable_node = min(curr_node + 6, end_node)
-            for i in range(curr_node + 1, last_accessable_node + 1):
-                if edges[i-1] != -1:
-                    if edges[i-1] not in visited_nodes:
-                        queue.append((edges[i-1], curr_node, distance + 1))
-                        visited_nodes.append(edges[i-1])
+            for i in range(curr_node + 1, min(curr_node + 6, end_node) + 1):
+                row_index = ((i-1)//n)
+                column_index = (i-1) % n
+                if row_index % 2 == 1:
+                    column_index = n - column_index - 1
+                row_index = n - row_index - 1
+                go_to_node = board[row_index][column_index]
+                if go_to_node != -1:
+                    if go_to_node not in visited_nodes:
+                        queue.append((go_to_node, distance + 1))
+                        visited_nodes.append(go_to_node)
                 elif i not in visited_nodes:
-                    queue.append((i, curr_node, distance + 1))
+                    queue.append((i, distance + 1))
                     visited_nodes.append(i)
         return -1

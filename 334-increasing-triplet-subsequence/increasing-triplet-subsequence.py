@@ -7,6 +7,6 @@ class Solution:
                 first = num
             elif num <= second:
                 second = num
-            elif second < float('inf'):
+            else:
                 return True
         return False

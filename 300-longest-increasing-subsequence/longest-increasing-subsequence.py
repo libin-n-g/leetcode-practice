@@ -1,5 +1,22 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
+        longest_subsequence = [nums[0]]
+        for num in nums:
+            if longest_subsequence[-1] < num:
+                longest_subsequence.append(num)
+                # print(longest_subsequence, num)
+                continue
+            for i, sub_sequence_endding in enumerate(longest_subsequence):
+                if sub_sequence_endding >= num:
+                    # replace the endding with new one
+                    longest_subsequence[i] = num
+                    # print(longest_subsequence, num)
+                    break
+            # print(longest_subsequence, num)
+        return len(longest_subsequence)
+    
+    
+    def lengthOfLIS_trial1(self, nums: List[int]) -> int:
         # Initialize a dictionary to store increasing subsequences of different lengths
         # Key 0 maps to an empty list for base case, key 1 starts with the first number
         increasting_subsequeces = {0: [], 1: [nums[0]]}

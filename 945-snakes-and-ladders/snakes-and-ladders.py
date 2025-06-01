@@ -5,7 +5,7 @@ class Solution:
         # do BFS
         end_node = n*n
         queue = deque([(1, 0)])
-        visited_nodes = [1]
+        visited_nodes = {1}
         while queue:
             curr_node, distance = queue.popleft()
             if curr_node == end_node:
@@ -20,8 +20,8 @@ class Solution:
                 if go_to_node != -1:
                     if go_to_node not in visited_nodes:
                         queue.append((go_to_node, distance + 1))
-                        visited_nodes.append(go_to_node)
+                        visited_nodes.add(go_to_node)
                 elif i not in visited_nodes:
                     queue.append((i, distance + 1))
-                    visited_nodes.append(i)
+                    visited_nodes.add(i)
         return -1

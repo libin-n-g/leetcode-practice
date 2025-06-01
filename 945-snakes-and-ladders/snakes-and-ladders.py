@@ -1,7 +1,7 @@
 class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         mem = {}
-        def calculate_index( i, n):
+        def calculate_go_to_node( i, n):
             if i in mem:
                 return mem[i]
             row_index = ((i-1)//n)
@@ -9,8 +9,8 @@ class Solution:
             if row_index % 2 == 1:
                 column_index = n - column_index - 1
             row_index = n - row_index - 1
-            mem[i] = (row_index, column_index)
-            return row_index, column_index
+            mem[i] = board[row_index][column_index]
+            return mem[i]
         n = len(board)
         edges = [] 
         # do BFS
@@ -22,8 +22,7 @@ class Solution:
             if curr_node == end_node:
                 return distance
             for i in range(curr_node + 1, min(curr_node + 6, end_node) + 1):
-                row_index, column_index = calculate_index(i, n)
-                go_to_node = board[row_index][column_index]
+                go_to_node = calculate_go_to_node(i, n)
                 if go_to_node != -1:
                     if go_to_node not in visited_nodes:
                         queue.append((go_to_node, distance + 1))

@@ -23,7 +23,6 @@ class Solution:
                 return distance
             for i in range(curr_node + 1, min(curr_node + 6, end_node) + 1):
                 row_index, column_index = calculate_index(i, n)
-                print(row_index, column_index)
                 go_to_node = board[row_index][column_index]
                 if go_to_node != -1:
                     if go_to_node not in visited_nodes:

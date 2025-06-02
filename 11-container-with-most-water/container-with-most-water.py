@@ -4,7 +4,6 @@ class Solution:
         r = len(height) - 1
         max_area = 0
         while l < r:
-            print(l, r)
             if height[l] < height[r]:
                 area = (r - l) * height[l]
                 l+=1

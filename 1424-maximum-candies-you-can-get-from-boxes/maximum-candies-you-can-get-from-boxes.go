@@ -2,9 +2,9 @@
 func maxCandies(status []int, candies []int, keys [][]int, containedBoxes [][]int, initialBoxes []int) int {
     var not_opened_but_visited map[int]bool = map[int]bool{}
     var ret int = 0
-    for len(initialBoxes) != 0 {
-        curr_box := initialBoxes[0]
-        initialBoxes = initialBoxes[1:]
+    for i := 0; i < len(initialBoxes); i++ {
+        curr_box := initialBoxes[i]
+        // initialBoxes = initialBoxes[1:]
         if status[curr_box] == 1{
             ret += candies[curr_box]
             for _, key := range keys[curr_box] {

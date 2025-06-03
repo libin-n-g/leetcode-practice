@@ -1,4 +1,3 @@
-
 func maxCandies(status []int, candies []int, keys [][]int, containedBoxes [][]int, initialBoxes []int) int {
     var not_opened_but_visited map[int]bool = map[int]bool{}
     var ret int = 0
@@ -14,7 +13,6 @@ func maxCandies(status []int, candies []int, keys [][]int, containedBoxes [][]in
                 }
             }
             for _, box := range containedBoxes[curr_box] {
-                // fmt.Println(box)
                 initialBoxes = append(initialBoxes, box)
             }
         } else {

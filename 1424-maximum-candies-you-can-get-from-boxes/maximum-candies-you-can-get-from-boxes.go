@@ -4,7 +4,6 @@ func maxCandies(status []int, candies []int, keys [][]int, containedBoxes [][]in
     var ret int = 0
     for i := 0; i < len(initialBoxes); i++ {
         curr_box := initialBoxes[i]
-        // initialBoxes = initialBoxes[1:]
         if status[curr_box] == 1{
             ret += candies[curr_box]
             for _, key := range keys[curr_box] {
@@ -15,7 +14,7 @@ func maxCandies(status []int, candies []int, keys [][]int, containedBoxes [][]in
                 }
             }
             for _, box := range containedBoxes[curr_box] {
-                fmt.Println(box)
+                // fmt.Println(box)
                 initialBoxes = append(initialBoxes, box)
             }
         } else {

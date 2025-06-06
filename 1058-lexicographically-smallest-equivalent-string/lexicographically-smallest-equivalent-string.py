@@ -27,16 +27,17 @@ class UnionFind:
         irep = self.find(i)
         jrep = self.find(j)
         # If representatives are different, make j's representative the parent of i's representative
-        if irep != jrep:
-            self.parent[irep] = min(jrep, irep)
-            self.parent[jrep] = min(jrep, irep)
+        if irep >= jrep:
+            self.parent[irep] = jrep
+        else:
+            self.parent[jrep] = irep
+            # self.parent[jrep] = min(jrep, irep)
 
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         char_map = UnionFind()
         for c1, c2 in zip(s1, s2):
             char_map.union(c1, c2)
-        print(char_map.parent)
         ret = ''
         for s in baseStr:
             ret += char_map.find(s)

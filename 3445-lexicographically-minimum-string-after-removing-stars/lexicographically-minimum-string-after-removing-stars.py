@@ -4,7 +4,7 @@ class Solution:
         min_values = set()
         for i, c in enumerate(s):
             if c == "*":
-                char, index = heappop(heap)
+                _, index = heappop(heap)
                 min_values.add(-index)
                 continue
             heappush(heap, (c, -i))

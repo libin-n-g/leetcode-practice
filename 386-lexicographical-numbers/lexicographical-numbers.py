@@ -4,12 +4,12 @@ class Solution:
         def traverse_node(prev):
             ret = []
             value = prev*10
-            if 0< value <= n:
+            if 0 < value <= n:
                 ret.append(value)
                 ret = ret + traverse_node(value)
             for num in range(1, 10):
                 value = prev*10 + num
-                print(value)
+                # print(value)
                 if value <= n:
                     ret.append(value)
                 else:

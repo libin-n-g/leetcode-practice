@@ -24,7 +24,8 @@ class Solution:
         # Helper function to calculate max difference for a pair of characters (a, b)
         def calculate_difference(a, b, prefixSum_dict):
             n = len(s)
-            # min_val stores minimum differences for each parity combination
+            # min_val stores minimum differences for each parity combination.
+            # We store the min values till the start index which is k before end index
             # Format: [evenA/evenB, evenA/oddB, oddA/evenB, oddA/oddB]
             min_val = [0, float('inf'), float('inf'), float('inf')]
             # min_index stores the index where minimum difference occurs for each parity

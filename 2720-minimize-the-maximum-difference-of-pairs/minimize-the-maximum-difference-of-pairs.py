@@ -5,7 +5,7 @@ class Solution:
         def check(max_limit):
             i = 1
             pair_count = 0
-            while i < N:
+            while i < N and pair_count < p:
                 if abs(sorted_nums[i] - sorted_nums[i-1]) > max_limit:
                     i+=1
                 else:
@@ -13,7 +13,7 @@ class Solution:
                     pair_count += 1
                     if pair_count == p:
                         return True
-            return pair_count >= p
+            return pair_count == p
         right = 10**9
         left = 0
         while left < right:

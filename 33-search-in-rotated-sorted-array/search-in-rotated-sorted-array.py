@@ -16,32 +16,22 @@ class Solution:
             # Check if right half is sorted (nums[mid] < nums[right])
             if nums[mid] < nums[right]:
                 # Right half is sorted
-                # Check if target is less than middle element
-                if target < nums[mid]: # Must be in right half
-                    right = mid - 1
-                # Check if target is greater than rightmost element
-                elif target > nums[right]:
-                    # Target is larger than largest element in sorted right half
-                    # Must be in left half
-                    right = mid - 1
-                else:
-                    # Target is within the sorted right half range
-                    # Search right half
+                # Check if target lies within the sorted right half range
+                if nums[mid] < target <= nums[right]:
+                    # Target is in the right half
                     left = mid + 1
+                else:
+                    # Target is in the left half
+                    right = mid - 1
             else:
                 # Left half is sorted (since right half is not)
-                # Check if target is greater than middle element
-                if target > nums[mid]: # Must be in right half
-                    left = mid + 1
-                # Check if target is less than leftmost element
-                elif target < nums[left]:
-                    # Target is smaller than smallest element in sorted left half
-                    # Must be in right half
-                    left = mid + 1
-                else:
-                    # Target is within the sorted left half range
-                    # Search left half
+                # Check if target lies within the sorted left half range
+                if nums[left] <= target < nums[mid]:
+                    # Target is in the left half
                     right = mid - 1
+                else:
+                    # Target is in the right half
+                    left = mid + 1
                     
         # Target not found in array
         return -1

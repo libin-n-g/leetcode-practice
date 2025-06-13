@@ -17,8 +17,7 @@ class Solution:
             if nums[mid] < nums[right]:
                 # Right half is sorted
                 # Check if target is less than middle element
-                if target < nums[mid]:
-                    # Target is less than middle, must be in left half
+                if target < nums[mid]: # Must be in right half
                     right = mid - 1
                 # Check if target is greater than rightmost element
                 elif target > nums[right]:
@@ -32,8 +31,7 @@ class Solution:
             else:
                 # Left half is sorted (since right half is not)
                 # Check if target is greater than middle element
-                if target > nums[mid]:
-                    # Target is larger than middle, must be in right half
+                if target > nums[mid]: # Must be in right half
                     left = mid + 1
                 # Check if target is less than leftmost element
                 elif target < nums[left]:

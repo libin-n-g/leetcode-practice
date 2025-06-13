@@ -12,7 +12,7 @@ class Solution:
                     i+=2
                     pair_count += 1
             return pair_count == p
-        right = 10**9
+        right = sorted_nums[-1] - sorted_nums[0]
         left = 0
         while left < right:
             mid = left + (right - left)//2

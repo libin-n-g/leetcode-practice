@@ -6,7 +6,7 @@ class Solution:
             i = 1
             pair_count = 0
             while i < N and pair_count < p:
-                if abs(sorted_nums[i] - sorted_nums[i-1]) > max_limit:
+                if sorted_nums[i] - sorted_nums[i-1] > max_limit:
                     i+=1
                 else:
                     i+=2

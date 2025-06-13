@@ -18,11 +18,8 @@ class Solution:
         left = 0
         while left < right:
             mid = left + (right - left)//2
-            print(mid)
             if check(mid):
-                print(f"{mid} True")
                 right = mid 
             else:
-                print(f"{mid} False")
                 left = mid + 1
         return left

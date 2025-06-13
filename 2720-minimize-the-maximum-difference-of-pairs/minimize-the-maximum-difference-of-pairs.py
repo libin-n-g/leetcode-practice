@@ -11,8 +11,6 @@ class Solution:
                 else:
                     i+=2
                     pair_count += 1
-                    if pair_count == p:
-                        return True
             return pair_count == p
         right = 10**9
         left = 0

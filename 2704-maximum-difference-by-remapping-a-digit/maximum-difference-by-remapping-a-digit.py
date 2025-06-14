@@ -12,6 +12,8 @@ class Solution:
                 max_replacement_digit = d
             if d != 0 and min_replacement_digit is None:
                 min_replacement_digit = d
+            if min_replacement_digit and max_replacement_digit:
+                break
         diff = 0
         for p, d in enumerate(digits):
             if d == max_replacement_digit == min_replacement_digit:

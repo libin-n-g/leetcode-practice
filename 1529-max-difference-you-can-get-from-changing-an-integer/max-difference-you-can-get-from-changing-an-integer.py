@@ -16,7 +16,7 @@ class Solution:
         while i < N and digits[i] == 9: i += 1  # Skip leading 9s to find a non-9 digit
         if i < N:
             first_x = digits[i]  # Set x to first non-9 digit
-        # first_y remains 9 to maximize the number
+        # first_y remains 9 to maximize the number if all digits are 9
         
         # Example: num = 999 -> first_x = 9, first_y = 9 (no change needed)
         # Example: num = 123 -> first_x = 1, first_y = 9 (replace 1 with 9)
@@ -45,9 +45,4 @@ class Solution:
                 x = 0  # No contribution if digit doesn't match x
             new_num = new_num * 10 + x  # Build the difference digit by digit
         
-        # Example: num = 555 -> first_x = 5, first_y = 9, second_x = 5, second_y = 1
-        # -> Each digit: 9-1 = 8 -> new_num = 888
-        # Example: num = 9 -> first_x = 9, first_y = 9, second_x = 9, second_y = 1
-        # -> Digit: 9-1 = 8 -> new_num = 8
-
         return new_num

@@ -1,13 +1,9 @@
 class Solution:
     def numTrees(self, n: int) -> int:
         # Initialize a DP array of size n+1 with zeros to store the number of unique BSTs for each number of nodes
-        dp = [0] * (n + 1)
-        
         # Base case: For 0 nodes (empty tree), there is 1 possible tree (the empty tree)
-        dp[0] = 1
-        
         # Base case: For 1 node, there is 1 possible tree (a single node)
-        dp[1] = 1
+        dp = {0: 1, 1: 1}
         
         # Iterate from 1 to n-1 to compute the number of unique BSTs for each number of nodes up to n
         # note that t means t+1 nodes in the tree

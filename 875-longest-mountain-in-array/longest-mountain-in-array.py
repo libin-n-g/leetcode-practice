@@ -18,6 +18,7 @@ class Solution:
                 continue
             i += 1
         return max_length
+
     def longestMountain_o2n(self, arr: List[int]) -> int:
         n = len(arr)
         l , r = 0, n - 1

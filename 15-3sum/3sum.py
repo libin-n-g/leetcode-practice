@@ -29,10 +29,10 @@ class Solution:
                     while l < r and sorted_nums[l] == sorted_nums[l-1]:
                         l += 1
                 # If sum is less than zero, we need a larger sum, so increment left pointer
-                elif val < 0:
+                elif val < 0: # As moving left to right gives larger number
                     l += 1
                 # If sum is greater than zero, we need a smaller sum, so decrement right pointer
-                else:
+                else: # As moving right to left gives smaller number
                     r -= 1
         # Return list of all valid triplets
         return result

@@ -1,5 +1,5 @@
 class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+    def minSubArrayLen_(self, target: int, nums: List[int]) -> int:
         # Initialize return value as array length (maximum possible subarray length)
         ret = len(nums)
         # Left pointer for sliding window
@@ -23,3 +23,24 @@ class Solution:
             return 0
         # Return minimum subarray length found
         return ret
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        prefix_sum = [0]*(len(nums)+1)
+        prefix_sum[0] = 0
+        ret = len(nums) + 1
+        for i, num in enumerate(nums):
+            prefix_sum[i+1] = prefix_sum[i] + num 
+        for i in range(len(nums)):
+            l = i
+            r = len(nums) - 1
+            while l <= r:
+                mid = l + (r - l)//2
+                # print(i, mid, l, r, prefix_sum[mid + 1] - prefix_sum[i], ret)
+                if prefix_sum[mid+1] - prefix_sum[i] >= target:
+                    ret = min(ret, mid - i + 1)
+                    r = mid - 1
+                else:
+                    l = mid + 1
+        if ret > len(nums):
+            return 0
+        return ret
+

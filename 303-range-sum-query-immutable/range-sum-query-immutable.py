@@ -2,6 +2,7 @@ class NumArray:
 
     def __init__(self, nums: List[int]):
         self.prefix_sum = [0]
+        # Prefix Sum
         for i in range(len(nums)):
             self.prefix_sum.append(self.prefix_sum[-1] + nums[i])
 

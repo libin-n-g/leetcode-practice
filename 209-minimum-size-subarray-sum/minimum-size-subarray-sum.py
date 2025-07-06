@@ -26,21 +26,21 @@ class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         prefix_sum = [0]*(len(nums)+1)
         prefix_sum[0] = 0
-        ret = len(nums) + 1
+        n = len(nums)
+        ret = n + 1
         for i, num in enumerate(nums):
             prefix_sum[i+1] = prefix_sum[i] + num 
+        if prefix_sum[n] < target:
+            return 0
         for i in range(len(nums)):
             l = i
-            r = len(nums) - 1
+            r = n - 1
             while l <= r:
                 mid = l + (r - l)//2
-                # print(i, mid, l, r, prefix_sum[mid + 1] - prefix_sum[i], ret)
-                if prefix_sum[mid+1] - prefix_sum[i] >= target:
+                if prefix_sum[mid + 1] - prefix_sum[i] >= target:
                     ret = min(ret, mid - i + 1)
                     r = mid - 1
                 else:
                     l = mid + 1
-        if ret > len(nums):
-            return 0
         return ret
 

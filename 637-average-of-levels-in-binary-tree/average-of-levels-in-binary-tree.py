@@ -10,12 +10,11 @@ class Solution:
         average = []
         while queue:
             level_sum = 0
-            level_count = 0
-            for _ in range(len(queue)):
+            level_count = len(queue)
+            for _ in range(level_count):
                 node, level = queue.popleft()
                 if node.left: queue.append((node.left, level + 1))
                 if node.right: queue.append((node.right, level + 1))
                 level_sum += node.val
-                level_count += 1
             average.append(level_sum/level_count)
         return average

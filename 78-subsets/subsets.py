@@ -4,7 +4,6 @@ class Solution:
         # results = []
         # def backtrack(subset=[], item_index=0):
         #     results.append(subset[:]) # shallow copy
-
         #     for i in range(item_index, len(nums)):
         #         subset.append(nums[i])
         #         backtrack(subset, i + 1)

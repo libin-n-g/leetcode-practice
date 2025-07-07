@@ -5,11 +5,6 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sortedToBST(self, nums: List[TreeNode]) -> Optional[TreeNode]:
-        if not nums:
-            return None
-       
-
     def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         inorder = []
         stack = []
@@ -21,6 +16,7 @@ class Solution:
                 root = stack.pop()
                 inorder.append(root)
                 root = root.right
+        # Creating new balanced Binary tree
         n = len(inorder)
         mid = n // 2
         root = inorder[mid]

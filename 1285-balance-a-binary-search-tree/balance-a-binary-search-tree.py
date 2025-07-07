@@ -8,26 +8,7 @@ class Solution:
     def sortedToBST(self, nums: List[TreeNode]) -> Optional[TreeNode]:
         if not nums:
             return None
-        n = len(nums)
-        mid = n // 2
-        root = nums[mid]
-        q = deque()
-        q.append((root, 0, mid-1))
-        q.append((root, mid+1, n-1))
-        while q:
-            parent, left, right = q.popleft()
-            if left <= right:
-                mid = left + (right - left)//2
-                child = nums[mid]
-                if child.val <= parent.val:
-                    parent.left = child
-                else:
-                    parent.right = child
-                q.append((child, left, mid - 1))
-                q.append((child, mid + 1, right))
-            else:
-                parent.left = parent.right = None
-        return root
+       
 
     def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         inorder = []
@@ -40,4 +21,23 @@ class Solution:
                 root = stack.pop()
                 inorder.append(root)
                 root = root.right
-        return self.sortedToBST(inorder)
+        n = len(inorder)
+        mid = n // 2
+        root = inorder[mid]
+        q = deque()
+        q.append((root, 0, mid-1))
+        q.append((root, mid+1, n-1))
+        while q:
+            parent, left, right = q.popleft()
+            if left <= right:
+                mid = left + (right - left)//2
+                child = inorder[mid]
+                if child.val <= parent.val:
+                    parent.left = child
+                else:
+                    parent.right = child
+                q.append((child, left, mid - 1))
+                q.append((child, mid + 1, right))
+            else:
+                parent.left = parent.right = None
+        return root

@@ -39,5 +39,4 @@ class Solution:
                 root = stack.pop()
                 inorder.append(root)
                 root = root.right
-        print(list(map(lambda x: x.val, inorder)))
         return self.sortedToBST(inorder)

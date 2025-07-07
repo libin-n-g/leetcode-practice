@@ -14,7 +14,7 @@ class Solution:
         if right_ancestor and left_ancestor:
             return root
         return left_ancestor if left_ancestor else right_ancestor
-    def lowestCommonAncestor_(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         queue = deque()
         ancesters = {}
         if root: 

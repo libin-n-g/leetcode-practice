@@ -6,6 +6,24 @@
 #         self.right = right
 class Solution:
     def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        visited_inorder = []
+        def inorder(root):
+            if root:
+                inorder(root.left)
+                visited_inorder.append(root)
+                inorder(root.right)
+        def create_BST(left, right):
+            if left > right:
+                return None
+            mid = left + (right - left)//2
+            root = visited_inorder[mid]
+            root.left = create_BST(left, mid - 1)
+            root.right = create_BST(mid + 1, right)
+            return root
+        inorder(root)
+        return create_BST(0, len(visited_inorder) - 1)
+
+    def balanceBST_iterative(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         inorder = []
         stack = []
         while root or stack:

@@ -19,13 +19,14 @@ class Solution:
             if left <= right:
                 mid = left + (right - left)//2
                 child = nums[mid]
-                child.left = child.right = None
                 if child.val <= parent.val:
                     parent.left = child
                 else:
                     parent.right = child
                 q.append((child, left, mid - 1))
                 q.append((child, mid + 1, right))
+            else:
+                parent.left = parent.right = None
         return root
 
     def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:

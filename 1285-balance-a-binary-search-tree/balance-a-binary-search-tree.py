@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    # RECIRSIVE SOLUTION
     def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         visited_inorder = []
         def inorder(root):

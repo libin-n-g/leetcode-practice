@@ -22,7 +22,6 @@ class Solution:
                 queue.append(node.right)
             if q in ancesters and p in ancesters:
                 break
-        # print(ancesters)
         node1, node2 = p, q
         while node1 != node2:
             node1 = ancesters[node1] if node1 else q

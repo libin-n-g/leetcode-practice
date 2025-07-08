@@ -21,9 +21,7 @@ class Solution:
                 heapq.heappush(sorted_events_by_end_time, end)
             
             end_time = heapq.heappop(sorted_events_by_end_time)
-            print(current_day, end_time)
             if end_time >= current_day:
-                print(f"attended on {current_day}")
                 attended += 1
             if current_day <= end_time:
                 current_day += 1

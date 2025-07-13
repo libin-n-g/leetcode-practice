@@ -3,24 +3,67 @@ import heapq
 
 class Solution:
     def maxValue(self, events: List[List[int]], k: int) -> int:
+        # Sort events by start time to process them in order
         events.sort()
+        # Get the number of events
         n = len(events)
+        # Extract start times for binary search
         starts = [s for s, _, _ in events]
+        # Initialize dp array with -1 for memoization (k+1 rows for event limits, n columns for event indices)
         dp = [[-1]*n for _ in range(k+1)]
+        for events_limit in range(k+1):
+            for index in range(n-1, -1, -1):
+                if events_limit == 0:
+                    dp[0][index] = 0
+                else:
+                    next_start_time_index = bisect_right(starts, events[index][1])
+                    # Compute max value by considering two cases:
+                    # 1. Skip current event and move to next
+                    # 2. Attend current event and move to next non-overlapping event
+                    print(next_start_time_index)
+                    dp[events_limit][index] = max(
+                        0 if index == n-1 else dp[events_limit][index+1],
+                        events[index][2] if next_start_time_index == n else dp[events_limit - 1][next_start_time_index] + events[index][2]  # Case 2: Including current event
+                    )
+        return dp[k][0]
+
+
+    def maxValue_recusrsive(self, events: List[List[int]], k: int) -> int:
+        # Sort events by start time to process them in order
+        events.sort()
+        # Get the number of events
+        n = len(events)
+        # Extract start times for binary search
+        starts = [s for s, _, _ in events]
+        # Initialize dp array with -1 for memoization (k+1 rows for event limits, n columns for event indices)
+        # Each element dp[count][cur_index] represents the maximum value that can be obtained by attending up to count events, starting from the event at index cur_index or beyond.
+        dp = [[-1]*n for _ in range(k+1)]
+        
+        # Recursive function to compute max value with memoization
         def maxValue(index, events_limit):
+            # Base case: No more events can be attended or reached end of events
             if events_limit == 0 or index == n:
                 return 0
+            # Return memoized result if already computed
             if dp[events_limit][index] != -1:
                 return dp[events_limit][index]
-            # end time of current event is events[index][1]
+            
+            # Find the next event that starts after the current event ends
             next_start_time_index = bisect_right(starts, events[index][1])
-
+            
+            # Compute max value by considering two cases:
+            # 1. Skip current event and move to next
+            # 2. Attend current event and move to next non-overlapping event
             dp[events_limit][index] = max(
-                maxValue(index+1, events_limit),
-                maxValue(next_start_time_index, events_limit - 1) + events[index][2]
+                maxValue(index+1, events_limit),  # Case 1: Not including current event
+                maxValue(next_start_time_index, events_limit - 1) + events[index][2]  # Case 2: Including current event
             )
+            # Return memoized result
             return dp[events_limit][index]
+        
+        # Start recursion from first event with k events allowed
         return maxValue(0, k)
+    
     def maxValue_old(self, events: List[List[int]], k: int) -> int:
         # Create a dictionary to map start times to lists of (end_time, value) tuples
         event_start_map = defaultdict(list)

@@ -3,6 +3,25 @@ import heapq
 
 class Solution:
     def maxValue(self, events: List[List[int]], k: int) -> int:
+        events.sort()
+        n = len(events)
+        starts = [s for s, _, _ in events]
+        dp = [[-1]*n for _ in range(k+1)]
+        def maxValue(index, events_limit):
+            if events_limit == 0 or index == n:
+                return 0
+            if dp[events_limit][index] != -1:
+                return dp[events_limit][index]
+            # end time of current event is events[index][1]
+            next_start_time_index = bisect_right(starts, events[index][1])
+
+            dp[events_limit][index] = max(
+                maxValue(index+1, events_limit),
+                maxValue(next_start_time_index, events_limit - 1) + events[index][2]
+            )
+            return dp[events_limit][index]
+        return maxValue(0, k)
+    def maxValue_old(self, events: List[List[int]], k: int) -> int:
         # Create a dictionary to map start times to lists of (end_time, value) tuples
         event_start_map = defaultdict(list)
         for s, e, v in events:
@@ -22,7 +41,7 @@ class Solution:
             # This ensures we only consider valid, non-overlapping previous events
             while min_heap and min_heap[0][0] <= start_time:
                 # Pop the earliest ending event
-                _, current_best = heapq.heappop(min_heap)
+                end, current_best = heapq.heappop(min_heap)
                 # Update best array with maximum values for each event count
                 for ck in range(1, k + 1):
                     best[ck] = max(best[ck], current_best[ck])

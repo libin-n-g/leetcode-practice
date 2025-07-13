@@ -20,7 +20,6 @@ class Solution:
                     # Compute max value by considering two cases:
                     # 1. Skip current event and move to next
                     # 2. Attend current event and move to next non-overlapping event
-                    print(next_start_time_index)
                     dp[events_limit][index] = max(
                         0 if index == n-1 else dp[events_limit][index+1],
                         events[index][2] if next_start_time_index == n else dp[events_limit - 1][next_start_time_index] + events[index][2]  # Case 2: Including current event

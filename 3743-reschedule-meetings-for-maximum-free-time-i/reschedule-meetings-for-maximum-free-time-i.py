@@ -12,14 +12,11 @@ class Solution:
             i += 1
             k -= 1
         while i <= N:
-            right_time_limit = startTime[i]
-            left_time_limit = endTime[j]
-            ret = max(ret, right_time_limit - left_time_limit - total_meeting)
+            ret = max(ret, startTime[i] - endTime[j] - total_meeting)
             if i < len(endTime):
                 total_meeting += endTime[i] - startTime[i]            
             j += 1
             i += 1
-            left_time_limit = endTime[j]
             total_meeting -= (endTime[j] - startTime[j])
             
         return ret

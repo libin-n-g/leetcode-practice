@@ -5,15 +5,16 @@ class Solution:
         total_meeting = 0
         ret = 0
         N = len(startTime)
+        startTime.append(eventTime)
+        endTime.append(0)
         while k > 0:
             total_meeting += endTime[i] - startTime[i]
             i += 1
             k -= 1
         while i <= N:
-            right_time_limit = eventTime if i == N else startTime[i]
-            left_time_limit = 0 if j == -1  else endTime[j]
+            right_time_limit = startTime[i]
+            left_time_limit = endTime[j]
             ret = max(ret, right_time_limit - left_time_limit - total_meeting)
-            # print(left_time_limit, right_time_limit, total_meeting)
             if i < len(endTime):
                 total_meeting += endTime[i] - startTime[i]            
             j += 1

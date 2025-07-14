@@ -24,7 +24,7 @@ class Solution:
             # Update the maximum free time if the current free time is larger
             max_free_time = max(max_free_time, free_time)
             # Subtract the gap from the earliest event in the window (i-k) to slide the window
-            free_time -= (startTime[i - k] - endTime[i - k])
+            free_time -= startTime[i - k] - endTime[i - k]
         
         # Return the maximum free time found
         return max_free_time

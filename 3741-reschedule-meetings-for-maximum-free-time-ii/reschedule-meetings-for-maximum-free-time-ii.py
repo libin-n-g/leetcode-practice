@@ -5,8 +5,6 @@ class Solution:
         startTime.append(eventTime)
         # Prepend 0 to endTime to represent the start of the timeline
         endTime = [0] + endTime
-        # Initialize variable to track meeting duration
-        meeting_duration = 0
         # Get the total number of events (including eventTime)
         N = len(endTime)
         # List to store time gaps between consecutive events

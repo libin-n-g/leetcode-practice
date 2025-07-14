@@ -1,7 +1,5 @@
 class Solution:
     def maxFreeTime(self, eventTime: int, k: int, startTime: List[int], endTime: List[int]) -> int:
-        i = 0
-        j = -1
         total_meeting = 0
         ret = 0
         N = len(startTime)

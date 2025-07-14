@@ -38,3 +38,8 @@ class Solution:
         
         # Return the maximum free time found
         return max_free_time
+# ANOTHER METHOD
+# Initialize a boolean array to mark events that can be skipped
+# Forward pass: Determine if each event can be skipped based on gaps before it
+# Backward pass: Determine if each event can be skipped based on gaps after it
+# Calculate the maximum free time by considering each event

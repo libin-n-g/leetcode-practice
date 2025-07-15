@@ -47,7 +47,7 @@ class Solution:
                         latest = max(latest, latest_temp)
             return [earliest + 1, latest + 1]
         earliest, latest = earliestAndLatest(n, firstPlayer, secondPlayer)
-        earliestAndLatest.cache_clear()
+        # earliestAndLatest.cache_clear()
         return [earliest, latest]
         
     def earliestAndLatest_recursive(self, n: int, firstPlayer: int, secondPlayer: int) -> List[int]:

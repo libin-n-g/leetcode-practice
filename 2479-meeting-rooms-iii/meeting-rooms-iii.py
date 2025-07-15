@@ -4,7 +4,7 @@ from collections import defaultdict
 class Solution:
     def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
         # Sort meetings by start time to process them in chronological order
-        meetings.sort()
+        meetings.sort(key = lambda x : x[0])
         # Dictionary to count the number of meetings per room
         room_count = defaultdict(int)
         # Min-heap of occupied rooms: (end_time, room_number)

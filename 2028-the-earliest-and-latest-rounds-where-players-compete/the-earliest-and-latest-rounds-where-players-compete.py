@@ -88,6 +88,7 @@ class Solution:
         earliest, latest = earliestAndLatest(n, firstPlayer, secondPlayer)
         earliestAndLatest.cache_clear()
         return [earliest, latest]
+
     def earliestAndLatest_recursive(self, n: int, firstPlayer: int, secondPlayer: int) -> List[int]:
         # Initialize return values: earliest (set high) and latest (set low)
         ret = [100, 0]

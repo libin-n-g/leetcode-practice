@@ -4,7 +4,7 @@ from collections import defaultdict
 class Solution:
     def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
         # Sort meetings by start time to process them in chronological order
-        heapq.heapify(meetings)
+        meetings.sort()
         # Dictionary to count the number of meetings per room
         room_count = defaultdict(int)
         # Min-heap of occupied rooms: (end_time, room_number)
@@ -17,8 +17,7 @@ class Solution:
         wait_time = 0
         
         # Process each meeting
-        while meetings:
-            s, e = heapq.heappop(meetings)
+        for s, e in meetings:
             # Free up rooms whose meetings have ended by the current meeting's start time
             while occupied_room_heap and occupied_room_heap[0][0] <= s:
                 _, room_num = heapq.heappop(occupied_room_heap)

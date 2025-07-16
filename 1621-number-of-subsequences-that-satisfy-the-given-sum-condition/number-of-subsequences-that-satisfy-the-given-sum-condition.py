@@ -9,6 +9,6 @@ class Solution:
             if nums[left] + nums[right] > target:
                 right -= 1
             else:
-                ret = (ret + 2**(right - left)) % mod
+                ret = (ret + 2**(right - left))
                 left += 1
-        return ret
+        return ret  % mod

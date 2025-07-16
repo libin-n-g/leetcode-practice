@@ -6,9 +6,10 @@ class Solution:
         right = len(nums) - 1
         ret = 0
         while left <= right:
-            if nums[left] + nums[right] > target:
+            while nums[left] + nums[right] > target and left <= right:
                 right -= 1
-            else:
-                ret = (ret + 2**(right - left))
-                left += 1
+            if left <= right:
+                ret += 1 << (right - left)
+                ret = ret % mod
+            left += 1
         return ret  % mod

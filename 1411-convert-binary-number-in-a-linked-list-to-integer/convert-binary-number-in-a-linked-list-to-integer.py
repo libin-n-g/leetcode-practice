@@ -14,10 +14,12 @@ class Solution:
         while head.next:
             # Multiply the current number by 2 to shift left, accounting for the next bit’s positional value
             # This mimics the binary-to-decimal conversion process 
+            # 01 -> 010
             num = num << 1
             # Move to the next node in the list
             head = head.next
-            # Add the value of the current node (0 or 1) to the number
+            # Add/ Do OR the value of the current node (0 or 1) to the number
+            # 010 | 001 = 011 or 010 | 000 => 010 
             num = num | head.val
         
         # Return the final decimal value

@@ -3,12 +3,15 @@ class Solution:
         n = len(word)
         if n < 3:
             return False
-        if not word.isalnum():
-            return False
         present_vowels = present_consonent = False
         for i in range(n):
-            if word[i].lower() in 'aeiou':
+            letter = word[i].lower()
+            if letter in 'aeiou':
                 present_vowels = True
-            elif word[i].lower().isalpha() :
+            elif letter.isalpha() :
                 present_consonent = True
+            elif letter.isnumeric():
+                continue
+            else:
+                return False
         return present_vowels & present_consonent

@@ -11,4 +11,4 @@ class Solution:
                 present_vowels = True
             elif word[i].lower().isalpha() :
                 present_consonent = True
-        return present_vowels and present_consonent
+        return present_vowels & present_consonent

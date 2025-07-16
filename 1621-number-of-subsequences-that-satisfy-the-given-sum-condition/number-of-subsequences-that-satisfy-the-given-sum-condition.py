@@ -10,6 +10,6 @@ class Solution:
                 right -= 1
             if left <= right:
                 ret += 1 << (right - left)
-                ret = ret % mod
+                # ret = ret % mod
             left += 1
         return ret  % mod

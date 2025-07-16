@@ -9,8 +9,8 @@ class Solution:
             if trainer_value >= players[j]:
                 num_match+=1
                 j+=1
-            if j >= n:
-                break
+                if j >= n:
+                    return num_match
 
         # players.sort()
         # trainers.sort()

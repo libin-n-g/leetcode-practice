@@ -5,10 +5,8 @@
 #         self.next = next
 class Solution:
     def getDecimalValue(self, head: Optional[ListNode]) -> int:
-        # Initialize the decimal number to store the result
-        num = 0
-        # Add the value of the head node (most significant bit, 0 or 1)
-        num += head.val
+        # Initialize the value of the head node (most significant bit, 0 or 1)
+        num = head.val
         
         # Traverse the linked list until the last node
         while head.next:

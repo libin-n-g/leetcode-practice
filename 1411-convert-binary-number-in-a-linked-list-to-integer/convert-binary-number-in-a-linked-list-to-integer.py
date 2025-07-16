@@ -19,6 +19,4 @@ class Solution:
             # Add/ Do OR the value of the current node (0 or 1) to the number
             # 010 | 001 = 011 or 010 | 000 => 010 
             num = num | head.val
-        
-        # Return the final decimal value
         return num

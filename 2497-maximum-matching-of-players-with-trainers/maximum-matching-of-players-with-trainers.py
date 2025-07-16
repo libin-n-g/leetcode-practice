@@ -1,12 +1,12 @@
 class Solution:
     def matchPlayersAndTrainers(self, players: List[int], trainers: List[int]) -> int:
-        players.sort(reverse=True)
-        trainers.sort(reverse=True)
+        players.sort()
+        trainers.sort()
         j = 0
-        n = len(trainers)
+        n = len(players)
         num_match = 0
-        for player_value in players:
-            if player_value <= trainers[j]:
+        for trainer_value in trainers:
+            if trainer_value >= players[j]:
                 num_match+=1
                 j+=1
             if j >= n:

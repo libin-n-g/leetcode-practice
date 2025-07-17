@@ -17,6 +17,11 @@ class Solution:
                 reminder = num % k
                 
                 # Update the counter for this remainder
+                # The condition given in question is (a + b) mod k = c 
+                # Therefore, a + b = nk + r => a = nk + c - b
+                # taking mod on both side, a mod k == (c - b) mod k = ( c mod k - b mod k ) mod k
+                # Let r1 = a mod k and r2 = b mod k, then r1 == (c - r2) mod k 
+                # (NB: 0 <= c < k becuse it is already reminder)
                 # For a number with remainder r, we can extend a subsequence ending with
                 # a number having remainder (ik - r) % k, because (r + (ik - r)) % k = ik
                 # Thus, counter[reminder] is set to the length of the subsequence ending

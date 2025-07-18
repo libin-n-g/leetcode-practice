@@ -32,7 +32,8 @@ class Solution:
         # Initialize best difference as the initial first_part sum
         # (will subtract second_part sum later)
         best = current_first_part_sum
-        # Store sums of first_part for each possible configuration
+        # Store sums of first_part for each possible configuration. 
+        # ie, What is min value possible with N + i values (counted from the start) is stored at ith index.
         first_part_sums = [current_first_part_sum]
         
         # Process middle N elements (indices N to 2N-1)
@@ -52,6 +53,7 @@ class Solution:
         # Calculate initial sum of second_part
         current_second_part_sum = sum(second_part)
         # Store sums of second_part for each possible configuration
+        # ie, What is max value possible with N + i values (counted from the end) is stored at ith index.
         second_part_sums = [current_second_part_sum]
         # Update best difference with initial sums
         best -= current_second_part_sum

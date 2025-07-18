@@ -9,9 +9,9 @@ class Solution:
             if len(rows) == curr_row:
                 rows.append("")
             rows[curr_row] += c
-            if curr_row == numRows - 1 and sign == 1:
+            if curr_row == numRows - 1:
                 sign = -1
-            elif curr_row == 0 and sign == -1 :
+            elif curr_row == 0:
                 sign = +1
             curr_row += sign
         return "".join(rows)

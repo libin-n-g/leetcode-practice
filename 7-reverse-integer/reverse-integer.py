@@ -14,4 +14,4 @@ class Solution:
             x //= 10
         if num >= (1<<31):
             return 0
-        return multiplier * int(num)
+        return multiplier * num

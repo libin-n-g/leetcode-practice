@@ -21,7 +21,7 @@ class Solution:
                 hashes.append(f"{f},{hash_tree(node.children[f], f)}")
             hash_key = f"[{']['.join(hashes)}]"
             if hash_key in node_map:
-                print(hash_key, "deleted", key)
+                # print(hash_key, "deleted", key)
                 node_map[hash_key].deleted = True
                 node.deleted = True
             if len(hashes) != 0:
@@ -34,7 +34,7 @@ class Solution:
         stack = [(root, [])]
         while stack:
             node, path = stack.pop()
-            print(path)
+            # print(path)
             if node.deleted:
                 continue
             else:

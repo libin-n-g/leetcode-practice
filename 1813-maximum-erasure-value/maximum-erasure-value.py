@@ -11,7 +11,6 @@ class Solution:
                 seen.remove(nums[left])
                 score -= nums[left]
                 left += 1
-                max_score = max(score, max_score)
             seen.add(nums[right])
             score += nums[right]
             max_score = max(score, max_score)

@@ -4,15 +4,15 @@ class Solution:
         seen = set()
         right = 0
         score = 0
+        N = len(nums)
         max_score = 0
-        while left <= right < len(nums):
-            if nums[right] in seen:
+        for right in range(N):
+            while nums[right] in seen:
                 seen.remove(nums[left])
                 score -= nums[left]
                 left += 1
-            else:
-                seen.add(nums[right])
-                score += nums[right]
-                right += 1
+                max_score = max(score, max_score)
+            seen.add(nums[right])
+            score += nums[right]
             max_score = max(score, max_score)
         return max_score

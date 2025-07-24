@@ -86,18 +86,3 @@ func minimumScore(nums []int, edges [][]int) int {
 
 	return best
 }
-
-// Helper functions for min and max
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}

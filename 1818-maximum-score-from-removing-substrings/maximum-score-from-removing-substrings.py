@@ -1,28 +1,24 @@
 class Solution:
     def maximumGain(self, s: str, x: int, y: int) -> int:
-        ab_condition = lambda x, y: x == 'a' and y == 'b'
-        ba_condition = lambda x, y: ab_condition(y, x) 
+        first_condition, second_condition = "ab", "ba"
         if x < y:
             x, y = y, x
-            first_condition = ba_condition
-            second_condition = ab_condition
-        else:
-            first_condition = ab_condition
-            second_condition = ba_condition
-        stack = []
+            first_condition, second_condition = second_condition, first_condition
+        first_condition_stack = []
         score = 0
         for c in s:
-            if stack and first_condition(stack[-1], c):
+            if first_condition_stack and \
+                first_condition[0] == first_condition_stack[-1] and first_condition[1] == c:
                 score += x
-                stack.pop()
+                first_condition_stack.pop()
             else:
-                stack.append(c)
-        stack_2 = []
-        for c in stack:
-            if stack_2 and second_condition(stack_2[-1], c):
+                first_condition_stack.append(c)
+        second_condition_stack = []
+        for c in first_condition_stack:
+            if second_condition_stack and second_condition[0] == second_condition_stack[-1] and second_condition[1] == c:
                 score += y
-                stack_2.pop()
+                second_condition_stack.pop()
             else:
-                stack_2.append(c)
+                second_condition_stack.append(c)
         return score 
             

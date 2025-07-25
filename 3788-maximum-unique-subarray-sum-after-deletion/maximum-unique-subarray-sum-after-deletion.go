@@ -1,4 +1,4 @@
-// import "fmt"
+
 func maxSum(nums []int) int {
     var maxValue int = 0
     for i, e := range nums {

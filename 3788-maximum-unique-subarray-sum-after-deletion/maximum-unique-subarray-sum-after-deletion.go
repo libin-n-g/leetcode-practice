@@ -1,9 +1,9 @@
 
 func maxSum(nums []int) int {
     var maxValue int = 0
-    counter := make(map[int]int)
+    counter := make(map[int]bool)
     for i, e := range nums {
-        counter[e]++
+        counter[e] = true
         if i==0 || e > maxValue {
             maxValue = e
         }

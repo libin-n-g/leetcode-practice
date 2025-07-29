@@ -1,7 +1,7 @@
 class Solution:
     def smallestSubarrays(self, nums: List[int]) -> List[int]:
         N = len(nums)
-        bit_map = defaultdict(int)
+        bit_map = {}
         max_or = 0
         result = []
         for i, num in enumerate(nums[::-1]):

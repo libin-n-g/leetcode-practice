@@ -55,10 +55,8 @@ class Solution:
     def numOfUnplacedFruits(self, fruits: List[int], baskets: List[int]) -> int:
         unplaced = N = len(baskets)
         st = SegmentTree(baskets)
-        print(st.tree)
         for f in fruits:
             index = st.query(f)
-            print(index)
             if index != -1:
                 unplaced -= 1
                 st.update(index, 0)

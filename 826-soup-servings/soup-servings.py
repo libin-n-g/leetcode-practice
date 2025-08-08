@@ -11,6 +11,8 @@ class Solution:
             if b <= 0:
                 return 0
             return (calc(a - 100, b) + calc(a - 75, b - 25) + calc(a - 50, b - 50) + calc(a - 25, b - 75))/4
-        return calc(n, n)
+        ret = calc(n, n)
+        calc.cache_clear()
+        return ret
             
         

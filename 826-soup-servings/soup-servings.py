@@ -1,6 +1,6 @@
 class Solution:
     def soupServings(self, n: int) -> float:
-        if n > 4600:
+        if n > 4500:
             return 1
         @cache
         def calc(a, b):

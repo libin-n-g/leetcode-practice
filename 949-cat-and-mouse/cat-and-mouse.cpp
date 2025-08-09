@@ -34,9 +34,9 @@ public:
         while (!resolved_states.empty()) {
             auto [mouse_pos, cat_pos, next_player, result] = resolved_states.front();
             resolved_states.pop();
-            // if (mouse_pos != 0){
+            // // if (mouse_pos != 0){
             // cout << "Mouse pos: " << mouse_pos << " Cat Pos: " << cat_pos << " Player: " << (next_player == CAT ? "CAT" : "MOUSE") << " Resolved result: " << winnerToString(result) << "\n";
-            // }
+            // // }
             for (const auto& moved_from: next_player == CAT ? graph[mouse_pos]: graph[cat_pos]) {
                 auto [prev_mouse_pos, prev_cat_pos, prev_next_player] = next_player == CAT ? tuple(moved_from, cat_pos, MOUSE) : tuple(mouse_pos, moved_from, CAT);
                 // MOUSE + 1 = MOUSE_WIN = 1;; CAT + 1 = CAT_WIN = 2 ;; hence prev_next_player + 1 == result 
@@ -46,8 +46,8 @@ public:
                     && ((prev_next_player + 1 == result) || (--game[prev_mouse_pos][prev_cat_pos][prev_next_player].second == 0))) {
                     if ((prev_mouse_pos == 1) && (prev_cat_pos == 2) && (prev_next_player == MOUSE)) return result;
                     resolved_states.push({prev_mouse_pos, prev_cat_pos, prev_next_player, game[prev_mouse_pos][prev_cat_pos][prev_next_player].first = result});
-            //         if (mouse_pos != 0){
-            // cout << " P Mouse pos: " << mouse_pos << " P Cat Pos: " << cat_pos << " P  Player: " << (next_player == CAT ? "CAT" : "MOUSE") << " P Resolved result: " << winnerToString(result) << "\n";
+            //         if (prev_mouse_pos != 0){
+            // cout << " P Mouse pos: " << prev_mouse_pos << " P Cat Pos: " << prev_cat_pos << " P  Player: " << (prev_next_player == CAT ? "CAT" : "MOUSE") << " P Resolved result: " << winnerToString(result) << "\n";
             //     }
                 }
                 // if (mouse_pos != 0){

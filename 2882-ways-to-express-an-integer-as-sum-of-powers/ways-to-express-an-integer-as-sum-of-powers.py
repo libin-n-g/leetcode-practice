@@ -1,6 +1,12 @@
 class Solution:
     def numberOfWays(self, n: int, x: int) -> int:
         MOD = 10**9 + 7
+        # dp = [0] * (n+1)
+        # dp[0] = 1
+        # for i in range(n):
+        #     if i**x > n:
+        #         break
+        #     dp[i] = dp() 
         @cache
         def get_ways(n, total, i):
             new_total = total + i**x

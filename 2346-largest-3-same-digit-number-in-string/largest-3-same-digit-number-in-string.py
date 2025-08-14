@@ -11,5 +11,4 @@ class Solution:
             else:
                 count = 1
                 counter_char = n
-        
         return str(max_number)*3 if max_number != -1 else ""

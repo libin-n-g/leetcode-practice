@@ -1,7 +1,5 @@
-import math
 class Solution:
     def areaOfMaxDiagonal(self, dimensions: List[List[int]]) -> int:
-        heap = []
-        for l, w in dimensions:
-            heappush(heap, (-(l*l + w*w), -l*w))
-        return -heap[0][1]
+        diags = [l*l + w*w for l, w in dimensions]
+        max_diag = max(diags)
+        return max([dimensions[i][0]*dimensions[i][1] for i in range(len(diags)) if max_diag == diags[i]])

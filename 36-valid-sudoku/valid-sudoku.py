@@ -9,8 +9,6 @@ class Solution:
                 keys = [f"col{j}", f"row{i}", f"box{box_num}"]
                 for k in keys:
                     if board[i][j] in rule_checker[k]:
-                        print(i, j, board[i][j], keys)
-                        print(rule_checker)
                         return False
                     rule_checker[k].add(board[i][j])
         return True

@@ -9,7 +9,7 @@ class Solution:
                 users_need_to_learn.add(v-1)
         min_count = len(languages)
         for lang in range(1, n+1):
-            # Auuming we are going to teach lang to every user who does not know it. 
+            # Assuming we are going to teach lang to every user who does not know it. 
             count = sum(1 for user in users_need_to_learn if lang not in languages[user])
             min_count = min(count, min_count)
         return min_count

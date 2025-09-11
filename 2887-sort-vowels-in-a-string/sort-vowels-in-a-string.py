@@ -3,7 +3,7 @@ class Solution:
         word = [ ]
         vowels = []
         for c in s:
-            if c not in "aeiouAEIOU":
+            if c not in set('aeiouAEIOU'):
                 word.append(c)
             else:
                 word.append("_")

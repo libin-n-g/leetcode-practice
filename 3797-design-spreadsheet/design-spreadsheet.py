@@ -16,7 +16,6 @@ class Spreadsheet:
         current_value = ""
         return_value = 0
         row = None
-        print(formula[1:])
         for c in formula[1:]:
             if c in self.columns_label:
                 row = self.columns[c]

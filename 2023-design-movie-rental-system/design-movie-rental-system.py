@@ -89,10 +89,10 @@ class MovieRentingSystem:
 
     def report(self) -> List[List[int]]:
         """
-        Returns up to 5 currently rented movies, sorted by shop ID and then movie ID.
+        Returns up to 5 currently rented movies, sorted by price and then shop ID.
 
         Returns:
-            List[List[int]]: List of [shop, movie] pairs for up to 5 rented movies.
+            List[List[int]]: List of [price, shop] pairs for up to 5 rented movies.
 
         Time Complexity: O(1) to access the SortedList slice, since SortedList maintains order.
         Space Complexity: O(1) for returning up to 5 pairs.

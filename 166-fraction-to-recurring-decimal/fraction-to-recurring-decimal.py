@@ -22,7 +22,6 @@ class Solution:
             numerator = numerator % denominator
             fractions.append(curr_fraction)
             numerator_list.append(numerator)
-        print(numerator_list, fractions, numerator)
         if fractions:
             result += "."
         for num, frac in zip(numerator_list, fractions):

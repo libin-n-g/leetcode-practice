@@ -16,9 +16,19 @@ class Solution:
     #     return ret
 
     def minimumTotal(self, triangle: List[List[int]]) -> int:
+        # Get the number of elements in the last row of the triangle
         n = len(triangle[-1])
+        
+        # Initialize dp array with the last row of the triangle
         dp = triangle[-1][:]
+        
+        # Iterate through the triangle from second-to-last row to the top
         for level in range(n-2, -1, -1):
+            # For each element in the current row
             for i in range(level+1):
-                dp[i] = min(dp[i],dp[i+1]) + triangle[level][i]
+                # Update dp[i] with the minimum path sum from the current position
+                # by choosing the smaller of the two possible paths below and adding the current value
+                dp[i] = min(dp[i], dp[i+1]) + triangle[level][i]
+        
+        # Return the minimum path sum starting from the top of the triangle
         return dp[0]

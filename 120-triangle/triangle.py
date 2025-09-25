@@ -19,7 +19,6 @@ class Solution:
         n = len(triangle[-1])
         dp = triangle[-1][:]
         for level in range(n-2, -1, -1):
-            print(level, len(dp), triangle[level])
             for i in range(level+1):
                 dp[i] = min(dp[i],dp[i+1]) + triangle[level][i]
         return dp[0]

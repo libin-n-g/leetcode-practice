@@ -7,5 +7,6 @@ class Solution:
                 return triangle[level][index] + \
                 min(get_mininum_total(level + 1, index), get_mininum_total(level + 1, index + 1))
             return triangle[level][index]
+        ret = get_mininum_total(0, 0)
         get_mininum_total.cache_clear()
-        return get_mininum_total(0, 0)
+        return ret
